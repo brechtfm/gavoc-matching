@@ -18,6 +18,9 @@ bundled samples:
                         attestation_id
 - glob_overview.csv   : glob_id, label, pref_label, latitude, longitude, wkt,
                         place_type_uri, place_type
+
+Previously downloaded review_decisions.csv files can be restored from the
+sidebar ("Restore review decisions").
 """
 
 import os
@@ -37,6 +40,8 @@ DEFAULT_GLOB = os.path.join(APP_DIR, "glob_overview.csv")
 
 GAVOC_COLOR = [0, 120, 220]   # blue
 GLOB_COLOR = [220, 60, 40]    # red
+
+DASH = "\u2013"  # en dash; defined here because f-string expressions can't contain backslashes before Python 3.12
 
 DECISION_OPTIONS = ["pending", "match", "reject", "child"]
 DECISION_LABELS = {
@@ -122,6 +127,54 @@ def get_decision(external_id, glob_id):
     return st.session_state.decisions.get((external_id, glob_id), {"decision": "pending", "note": ""})
 
 
+def restore_decisions_from_upload(uploaded_file, known_pairs):
+    """
+    Merge decisions from an uploaded review_decisions.csv into session state.
+
+    Uploaded rows overwrite existing decisions for the same
+    (external_id, glob_id) pair; other existing decisions are kept.
+    Returns (restored_count, skipped_invalid_count, unknown_pair_count).
+    Raises ValueError if the file is unreadable or missing required columns.
+    """
+    try:
+        df = pd.read_csv(uploaded_file, dtype=str).fillna("")
+    except Exception as e:
+        raise ValueError(f"Could not read the file as CSV: {e}")
+
+    required = {"external_id", "glob_id", "decision"}
+    missing = required - set(df.columns)
+    if missing:
+        raise ValueError("File is missing required column(s): " + ", ".join(sorted(missing)))
+
+    restored = 0
+    skipped_invalid = 0
+    unknown_pairs = 0
+
+    for _, row in df.iterrows():
+        ext_id = str(row["external_id"]).strip()
+        glob_id = str(row["glob_id"]).strip()
+        decision = str(row["decision"]).strip() or "pending"
+        note = str(row["note"]) if "note" in df.columns else ""
+
+        if not ext_id or not glob_id or decision not in DECISION_OPTIONS:
+            skipped_invalid += 1
+            continue
+
+        key = (ext_id, glob_id)
+        if key not in known_pairs:
+            unknown_pairs += 1  # still restored, but reported to the user
+
+        st.session_state.decisions[key] = {"decision": decision, "note": note}
+
+        # Drop any cached note widget state so the restored note is displayed
+        # (otherwise the stale widget value would overwrite it on the next run).
+        st.session_state.pop(f"note_{ext_id}_{glob_id}", None)
+        restored += 1
+
+    save_decisions()
+    return restored, skipped_invalid, unknown_pairs
+
+
 # --------------------------------------------------------------------------
 # Sidebar: data sources
 # --------------------------------------------------------------------------
@@ -132,6 +185,14 @@ st.sidebar.caption("Upload your full CSVs here, or leave blank to use the bundle
 up_matches = st.sidebar.file_uploader("gavoc_matches.csv", type="csv", key="up_matches")
 up_gavoc = st.sidebar.file_uploader("gavoc_overview.csv", type="csv", key="up_gavoc")
 up_glob = st.sidebar.file_uploader("glob_overview.csv", type="csv", key="up_glob")
+
+st.sidebar.markdown("---")
+st.sidebar.title("Restore review decisions")
+st.sidebar.caption(
+    "Upload a previously downloaded review_decisions.csv to restore your progress. "
+    "Uploaded decisions are merged in and overwrite existing ones for the same pair."
+)
+up_decisions = st.sidebar.file_uploader("review_decisions.csv", type="csv", key="up_decisions")
 
 try:
     matches_df = load_csv(up_matches) if up_matches is not None else load_csv(DEFAULT_MATCHES)
@@ -152,6 +213,45 @@ glob_by_id = glob_df.set_index("glob_id", drop=False)
 
 if "decisions" not in st.session_state:
     st.session_state.decisions = load_decisions()
+
+# --------------------------------------------------------------------------
+# Restore decisions from an uploaded file (applied once per uploaded file)
+# --------------------------------------------------------------------------
+
+if up_decisions is not None:
+    # Streamlit reruns the script on every interaction; this guard makes sure
+    # a given upload is applied only once, so it doesn't overwrite decisions
+    # made after the restore.
+    upload_signature = (up_decisions.name, up_decisions.size)
+    if st.session_state.get("last_restored") != upload_signature:
+        known_pairs = set(zip(matches_df["external_id"], matches_df["glob_id"]))
+        try:
+            n_ok, n_invalid, n_unknown = restore_decisions_from_upload(up_decisions, known_pairs)
+            st.session_state.restore_message = ("success", n_ok, n_invalid, n_unknown)
+        except ValueError as e:
+            st.session_state.restore_message = ("error", str(e))
+        st.session_state.last_restored = upload_signature
+else:
+    # Uploader was cleared; allow the same file to be uploaded again later.
+    st.session_state.pop("last_restored", None)
+    st.session_state.pop("restore_message", None)
+
+msg = st.session_state.get("restore_message")
+if msg and up_decisions is not None:
+    if msg[0] == "error":
+        st.sidebar.error(msg[1])
+    else:
+        _, n_ok, n_invalid, n_unknown = msg
+        st.sidebar.success(f"Restored {n_ok} decision(s).")
+        if n_invalid:
+            st.sidebar.warning(
+                f"Skipped {n_invalid} row(s) with a missing id or an unrecognised decision value."
+            )
+        if n_unknown:
+            st.sidebar.warning(
+                f"{n_unknown} restored pair(s) don't exist in the loaded matches file "
+                "(they were kept, but won't be shown for review)."
+            )
 
 # --------------------------------------------------------------------------
 # Sidebar: navigation
@@ -259,8 +359,8 @@ with gavoc_col:
     st.caption(f"external_id: `{current_ext_id}`")
     if gavoc_aliases:
         st.markdown("**Labels:** " + ", ".join(gavoc_aliases))
-    st.markdown(f"**Place type:** {gavoc_row.get('place_type', '\u2013') or '\u2013'}")
-    st.markdown(f"**PP type label:** {gavoc_row.get('pp_type_label', '\u2013') or '\u2013'}")
+    st.markdown(f"**Place type:** {gavoc_row.get('place_type', DASH) or DASH}")
+    st.markdown(f"**PP type label:** {gavoc_row.get('pp_type_label', DASH) or DASH}")
     st.markdown(f"**# candidate matches:** {len(entry_matches)}")
     if gavoc_lat is not None and gavoc_lon is not None:
         st.markdown(f"**Coordinates:** {gavoc_lat:.4f}, {gavoc_lon:.4f}")
@@ -314,7 +414,7 @@ with candidates_col:
                     st.markdown(f"**GLOB pref. label:** {glob_row.get('pref_label', '(none)')}")
                     if glob_aliases:
                         st.markdown("**GLOB aliases:** " + ", ".join(glob_aliases))
-                    st.markdown("**GLOB place type(s):** " + (", ".join(glob_place_types) if glob_place_types else "\u2013"))
+                    st.markdown("**GLOB place type(s):** " + (", ".join(glob_place_types) if glob_place_types else DASH))
 
                     metric_cols = st.columns(3)
                     metric_cols[0].markdown(f"**Overlap:** {overlap}")
