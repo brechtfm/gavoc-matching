@@ -994,5 +994,63 @@ GLOB_GAVOC_07582,GLOB_85,match,
 GLOB_GAVOC_04174,GLOB_533,match,
 GLOB_GAVOC_05485,GLOB2_1190,child,
 GLOB_GAVOC_05559,GLOB2_897,match,
-GLOB_GAVOC_05561,GLOB2_897,pending,Anjana
+GLOB_GAVOC_05561,GLOB2_897,match,Anjana
 GLOB_GAVOC_05574,GLOB_403,match,
+GLOB_GAVOC_08339,GLOB2_1376,match,Anjana
+GLOB_GAVOC_09550,GLOB2_1716,match,Anjana 
+GLOB_GAVOC_09555,GLOB_361,match,Anjana 
+GLOB_GAVOC_09556,GLOB_361,match,Anjana 
+GLOB_GAVOC_09560,GLOB_PY_28,child,Anjana. 
+GLOB_GAVOC_09584,GLOB_640,reject,Anjana 
+GLOB_GAVOC_09625,GLOB_BN_08,match,Anjana 
+GLOB_GAVOC_09631,GLOB_640,reject,Anjana
+GLOB_GAVOC_09632,GLOB_640,reject,Anjana
+GLOB_GAVOC_09639,GLOB_613,match,Anjana
+GLOB_GAVOC_09645,GLOB2_1628,reject,Anjana
+GLOB_GAVOC_09651,GLOB_864,match,Anjana
+GLOB_GAVOC_09672,GLOB_699,reject,Anjana Unable to find a place called Taoene
+GLOB_GAVOC_09682,GLOB2_1813,reject,Anjana (Two diff villages in the same coast of Halmehra
+GLOB_GAVOC_09685,GLOB_RT_168,match,Anjana
+GLOB_GAVOC_09698,GLOB_633,match,Anjana 
+GLOB_GAVOC_03825,GLOB2_1173,child,Anjana 
+GLOB_GAVOC_04025,GLOB2_E_244,child,Anjana ( Both fragments of the one kingdom Iha
+GLOB_GAVOC_04186,GLOB_900,match,Anjana
+GLOB_GAVOC_04324,GLOB2_E_233,match,Anjana ( just spelling variation) 
+GLOB_GAVOC_04400,GLOB_263,reject,Anjana (Two dif places)
+GLOB_GAVOC_04570,GLOB2_989,child,Anjana 
+GLOB_GAVOC_04598,GLOB2_1580,child,Anjana 
+GLOB_GAVOC_04699,GLOB2_E_272,child,Anjana (same geographical region)
+GLOB_GAVOC_04760,GLOB_112,child,Anjana
+GLOB_GAVOC_04764,GLOB_628,reject,Anjana (2 places located within the Papua region of Eastern Indonesia)
+GLOB_GAVOC_04922,GLOB_RT_173,match,Anjana 
+GLOB_GAVOC_04923,GLOB_RT_30,reject,Anjana( Labuhan is a generic name for harbour) These are two diff harbours. 
+GLOB_GAVOC_04966,GLOB2_E_223,reject,Anjana (2 diff Islands) 
+GLOB_GAVOC_04974,GLOB2_1150,match,Anjana 
+GLOB_GAVOC_05251,GLOB2_1430,match,Anjana 
+GLOB_GAVOC_05335,GLOB2_1165,reject,Anjana ( 2 diff places within west Sulawesi)
+GLOB_GAVOC_05347,GLOB_240,reject,Anjana ( a river and a settlement)
+GLOB_GAVOC_05411,GLOB2_1007,child,Anjana (Maba sits in the Halmahera regency )
+GLOB_GAVOC_05412,GLOB2_1007,match,Anjana 
+GLOB_GAVOC_05415,GLOB2_1007,match,Anjana
+GLOB_GAVOC_05572,GLOB_731,reject,Anjana (please review again) 
+GLOB_GAVOC_05576,GLOB_403,match,Anjana 
+GLOB_GAVOC_05636,GLOB_67,child,Anjana 
+GLOB_GAVOC_05671,GLOB_36,match,Anjana
+GLOB_GAVOC_05690,GLOB_E_9,match,Anjana 
+GLOB_GAVOC_05694,GLOB_268,match,Anjana
+GLOB_GAVOC_05709,GLOB_542,match,Anjana
+GLOB_GAVOC_05718,GLOB_304,match,Anjana 
+GLOB_GAVOC_05747,GLOB2_1067,match,Anjana
+GLOB_GAVOC_05886,GLOB2_1831,child,The river flows through the marunda land
+GLOB_GAVOC_05906,GLOB2_1831,child,Anjana
+GLOB_GAVOC_05926,GLOB_655,child,Anjana
+GLOB_GAVOC_05962,GLOB_570,match,Anjana
+GLOB_GAVOC_05965,GLOB_570,match,Anjana
+GLOB_GAVOC_05990,GLOB_E_10,match,Anjana
+GLOB_GAVOC_05993,GLOB_PY_39,match,Anjana (These are old names)
+GLOB_GAVOC_06047,GLOB2_1785,match,Anjana
+GLOB_GAVOC_06109,GLOB2_E_126,reject,Anjana
+GLOB_GAVOC_06110,GLOB_73,match,Anjana
+GLOB_GAVOC_06117,GLOB_RT_180,match,Anjana
+GLOB_GAVOC_06128,GLOB_E_26,match,Anjana
+GLOB_GAVOC_06131,GLOB2_1913,match,Anjana
