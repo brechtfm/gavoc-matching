@@ -358,7 +358,7 @@ with gavoc_col:
     st.subheader(f"{gavoc_row.get('pref_label', '(no label)')}")
     st.caption(f"external_id: `{current_ext_id}`")
     if gavoc_aliases:
-        st.markdown("**Labels:** " + ", ".join(gavoc_aliases))
+        st.markdown("**Labels:** " + "; ".join(gavoc_aliases))
     st.markdown(f"**Place type:** {gavoc_row.get('place_type', DASH) or DASH}")
     st.markdown(f"**PP type label:** {gavoc_row.get('pp_type_label', DASH) or DASH}")
     st.markdown(f"**# candidate matches:** {len(entry_matches)}")
