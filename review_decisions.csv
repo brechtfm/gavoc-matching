@@ -980,19 +980,19 @@ GLOB_GAVOC_07718,GLOB_648,match,
 GLOB_GAVOC_06655,GLOB_643,match,
 GLOB_GAVOC_06662,GLOB2_1837,reject,
 GLOB_GAVOC_84210,GLOB_835,match,
-GLOB_GAVOC_03400,GLOB_177,reject,
+GLOB_GAVOC_03400,GLOB_177,reject,Hoek; Punt
 GLOB_GAVOC_03416,GLOB_655,reject,
 GLOB_GAVOC_03508,GLOB_314,reject,
 GLOB_GAVOC_03564,GLOB2_1721,reject,Anjana
-GLOB_GAVOC_03568,GLOB2_1721,reject,
-GLOB_GAVOC_03593,GLOB_314,child,
-GLOB_GAVOC_03654,GLOB_PY_25,reject,
+GLOB_GAVOC_03568,GLOB2_1721,reject,Comp. Fort geweest
+GLOB_GAVOC_03593,GLOB_314,child,berg
+GLOB_GAVOC_03654,GLOB_PY_25,reject,Rivier
 GLOB_GAVOC_03657,GLOB_PY_25,reject,Anjana (appears as two different rivers)
 GLOB_GAVOC_03813,GLOB_331,match,
 GLOB_GAVOC_03821,GLOB_331,match,
-GLOB_GAVOC_07582,GLOB_85,match,
-GLOB_GAVOC_04174,GLOB_533,match,
-GLOB_GAVOC_05485,GLOB2_1190,child,
+GLOB_GAVOC_07582,GLOB_85,match,Logie
+GLOB_GAVOC_04174,GLOB_533,match,Logie
+GLOB_GAVOC_05485,GLOB2_1190,child,Negery
 GLOB_GAVOC_05559,GLOB2_897,match,
 GLOB_GAVOC_05561,GLOB2_897,match,Anjana
 GLOB_GAVOC_05574,GLOB_403,match,
@@ -1161,3 +1161,54 @@ GLOB_GAVOC_07169,GLOB_225,match,Anjana
 GLOB_GAVOC_07173,GLOB2_1045,match,Anjana
 GLOB_GAVOC_07178,GLOB_NB_121,reject,Anjana
 GLOB_GAVOC_07194,GLOB2_902,match,Anjana
+GLOB_GAVOC_07398,GLOB_377,reject,Anjana ( in central and west Java)
+GLOB_GAVOC_07404,GLOB_666,match,Anjana (all good)
+GLOB_GAVOC_07408,GLOB_153,reject,Anjana( Diff eventhough present in the sulawesi island
+GLOB_GAVOC_07409,GLOB_RT_163,match,Anjana (all good)
+GLOB_GAVOC_07422,GLOB2_1857,match,Anjana (GAVOC LABEL Koninckrijk)
+GLOB_GAVOC_07425,NR_74_GEO_1,match,"Anjana all good but (GAVOC LABEL Ilha, which means Island in Portuguese"
+GLOB_GAVOC_07450,GLOB2_1498,match,Anjana (GAVOC Label   t' District) 
+GLOB_GAVOC_07455,GLOB_198,match,"Anjana (all good. But  the type here is ""Point"") What does it mean by Point as a type?"
+GLOB_GAVOC_07469,NR_105,match,Anjana
+GLOB_GAVOC_07485,GLOB2_1062,match,Anjana all good
+GLOB_GAVOC_07492,GLOB_224,child,Anjana (all good) 
+GLOB_GAVOC_07518,GLOB_84,child,Anjana ( A case of a river and kingdom. So child
+GLOB_GAVOC_07519,GLOB_224,reject,Anjana (GAVOC label Passo- passo means isthmus. its a generic term
+GLOB_GAVOC_07529,GLOB2_1080,match,Anjana (All good. One name
+GLOB_GAVOC_07536,GLOB2_E_22,match,Anjana 
+GLOB_GAVOC_07537,GLOB2_E_22,match,Anjana (GAVOC Label t landt van) 
+GLOB_GAVOC_07546,GLOB_414,match,Anjana 
+GLOB_GAVOC_07555,GLOB_PY_51,reject,"Anjana (All good. But what is the place type ""Point"") "
+GLOB_GAVOC_07573,GLOB_RT_31,match,Anjana 
+GLOB_GAVOC_07591,GLOB2_1211,match,Anjana no comments
+GLOB_GAVOC_07617,GLOB_198,child,Anjana - still what is Point!!?
+GLOB_GAVOC_07629,GLOB2_1232,child,Anjana all good but (GAVOC Label Riv present)
+GLOB_GAVOC_07630,GLOB2_933,match,Anjana all good  (Old name of Bago was Pegu
+GLOB_GAVOC_07632,GLOB2_933,match,"Anjana (GAVOC Labels0 De stad , de stadt present)"
+GLOB_GAVOC_07638,GLOB2_1393,match,Anjana all good
+GLOB_GAVOC_07645,GLOB2_1020,match,anjana -Review Again (its a match in the old context. But in modern context both are diff
+GLOB_GAVOC_07674,GLOB_388,match,Anjana - no comments
+GLOB_GAVOC_07676,GLOB_388,child,Anjana (perak river flowing through the perak region
+GLOB_GAVOC_07681,GLOB2_1555,match,Anjana all good (both are old and new names)
+GLOB_GAVOC_07715,GLOB2_1228,match,Anjana -no comments
+GLOB_GAVOC_07731,GLOB_RT_24,match,Anjana no comments
+GLOB_GAVOC_07752,GLOB_PY_6,child,Anjana all good (the case of a river and territory)
+GLOB_GAVOC_07754,GLOB_173,reject,Anjana
+GLOB_GAVOC_07755,GLOB_E_53,match,Anjana (Gavoc Label-d')
+GLOB_GAVOC_07770,GLOB2_1031,child,Anjana (Gavoc Label Logie)
+GLOB_GAVOC_07781,GLOB_NB_134,match,Anjana - no comments
+GLOB_GAVOC_07802,GLOB2_1393,match,Anjana no comments
+GLOB_GAVOC_07803,GLOB2_1393,match,Anjana 
+GLOB_GAVOC_07804,GLOB2_1393,match,Anjana
+GLOB_GAVOC_07818,GLOB_BN_142,child,Anjana (Gavoc label I)
+GLOB_GAVOC_07826,GLOB2_1426,reject,Anjana - reject.just a look a like!!
+GLOB_GAVOC_07835,GLOB_656,match,Anjana 
+GLOB_GAVOC_07909,GLOB_391,reject,Anjana - no comments. 2 places very far away
+GLOB_GAVOC_07927,GLOB_662,match,Anjana - no comments
+GLOB_GAVOC_07959,GLOB_900,reject,anjana - no comments 2 diff islands. 
+GLOB_GAVOC_08175,GLOB_306,match,Anjana - no comments old and new names 
+GLOB_GAVOC_08202,GLOB2_936,reject,Anjana - no comments
+GLOB_GAVOC_08213,GLOB_83,child,Anjana
+GLOB_GAVOC_08267,GLOB2_936,match,Anjana no comments
+GLOB_GAVOC_08272,GLOB2_936,match,Anjana
+GLOB_GAVOC_08273,GLOB_RT_110,match,Anjana no comments
